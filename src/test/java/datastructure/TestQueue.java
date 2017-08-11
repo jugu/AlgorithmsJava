@@ -67,6 +67,55 @@ public class TestQueue {
 	 * 
 	 */
 	@Test
+	public void testQueuePollDynamic() throws QueueException {
+		Queue<Integer> q = new Queue<Integer>();
+		for (int i = 1; i <= 12; i++) {
+			q.add(i);
+		}
+		for (int i = 1; i <= 12; i++) {
+			q.poll();
+		}
+		assertEquals(0, q.size());
+	}
+	
+	/**
+	 * @throws QueueException
+	 */
+	@Test
+	public void testQueuePollException() throws QueueException{
+		Queue<Integer> q = new Queue<Integer>();
+		thrown.expect(QueueException.class);
+		q.poll();
+	}
+	
+	/**
+	 * @throws QueueException
+	 */
+	@Test
+	public void testQueuePeekException() throws QueueException{
+		Queue<Integer> q = new Queue<Integer>();
+		thrown.expect(QueueException.class);
+		q.peek();
+	}
+	
+	/**
+	 * @throws QueueException
+	 */
+	@Test
+	public void testQueuePeek() throws QueueException{
+		Queue<Integer> q = new Queue<Integer>();
+		q.add(3);
+		q.add(4);
+		q.poll();
+		int x = q.peek();
+		assertEquals(4, x);
+	}
+	
+	/**
+	 * @throws QueueException 
+	 * 
+	 */
+	@Test
 	public void testQueuePoll() throws QueueException{
 		Queue<Integer> q = new Queue<Integer>();
 		for (int i = 1; i <= 5; i++) {

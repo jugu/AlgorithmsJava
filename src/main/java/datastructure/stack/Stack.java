@@ -48,7 +48,7 @@ public class Stack<T> {
 		}
 		T obj = arr[SIZE];
 		SIZE--;
-		if (SIZE < TOTAL_SIZE/2) {
+		if (SIZE < TOTAL_SIZE/3) {
 			contract();
 		}
 		return obj;
@@ -77,7 +77,7 @@ public class Stack<T> {
 	
 	@SuppressWarnings("unchecked")
 	private void contract() {
-		TOTAL_SIZE = SIZE/2;
+		TOTAL_SIZE = TOTAL_SIZE/2;
 		T[] tmpArr = (T[]) new Object[TOTAL_SIZE];
 		for (int i = 0; i < SIZE; i++) {
 			tmpArr[i] = arr[i];

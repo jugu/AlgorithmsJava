@@ -5,7 +5,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Rule;
+
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import datastructure.list.Iterator;
 import datastructure.list.LinkedList;
@@ -18,6 +23,12 @@ import datastructure.list.LinkedListException;
 public class TestLinkedList {
 	
 	private LinkedList<Integer> integerList;
+	
+	/**
+	 * Parameter to track expected exception in test cases
+	 */
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
 	
 	
 	/**
@@ -48,9 +59,23 @@ public class TestLinkedList {
 		integerList.add(1);
 		integerList.add(2);
 		integerList.add(3);
+		assertFalse(integerList.isEmpty());
 		assertEquals(3, integerList.size());
 		integerList.remove(3);
 		assertEquals(2, integerList.size());
+	}
+	
+	/**
+	 * @throws LinkedListException 
+	 * 
+	 */
+	@Test
+	public void testRemoveException() throws LinkedListException {
+		integerList = new LinkedList<>();
+		assertNotNull(integerList);
+		assertTrue(integerList.isEmpty());
+		thrown.expect(LinkedListException.class);
+		integerList.remove(1);
 	}
 	
 	/**

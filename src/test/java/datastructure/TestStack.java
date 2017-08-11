@@ -52,4 +52,49 @@ public class TestStack {
 		stack.push(12);
 		assertEquals(stack.size(), 3);
 	}
+	
+	
+	/**
+	 * Method to test Stack resizing by adding more than 10 elements
+	 */
+	@Test
+	public void testStackResizePush() {
+		Stack<Integer> stack = new Stack<Integer>();
+		assertNotNull(stack);
+		assertEquals(stack.size(), 0);
+		assertTrue(stack.isEmpty());
+		stack.push(11);
+		stack.push(12);
+		stack.push(13);
+		stack.push(14);
+		stack.push(15);
+		stack.push(16);
+		stack.push(17);
+		stack.push(18);
+		stack.push(19);
+		stack.push(21);
+		// resize should occur at next insert
+		stack.push(22);
+		assertEquals(stack.size(), 11);
+	}
+	
+	/**
+	 * Method to test Stack resizing(contraction) by popping elements
+	 * @throws StackException 
+	 */
+	@Test
+	public void testStackResizePop() throws StackException {
+		Stack<Integer> stack = new Stack<Integer>();
+		assertNotNull(stack);
+		assertEquals(stack.size(), 0);
+		assertTrue(stack.isEmpty());
+		for (int i = 0; i < 11; i++) {
+			stack.push(i);
+		}
+		for (int i = 0; i < 11; i++) {
+			stack.pop();
+		}
+		assertEquals(stack.size(), 0);
+	}
+	
 }

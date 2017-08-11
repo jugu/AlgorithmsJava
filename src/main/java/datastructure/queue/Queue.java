@@ -56,7 +56,7 @@ public class Queue<T> {
 		T element = arr[frontIndex];
 		frontIndex++;
 		SIZE--;
-		if (SIZE > 9 && SIZE < TOTAL_SIZE/2) {
+		if (SIZE < TOTAL_SIZE/3) {
 			contract();
 		}
 		return element;
